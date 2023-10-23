@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="../../dist/vue.js"></script>
+    <template id="template">
+      <section key="1">
+        <h1 key="1-1" class="message">{{ message }}</h1>
+        <button key="1-2" @click="changeMessage">change message</button>
+      </section>
+    </template>
+    <script>
+      // debugger
+      new Vue({
+        el: "#app",
+        template: "#template",
+        data() {
+          return {
+            message: "hello san!",
+          };
+        },
+        beforeCreate() {
+          console.log("beforeCreate");
+        },
+        created() {
+          console.log("created");
+        },
+        beforeMount() {
+          console.log("beforeMount");
+        },
+        mounted() {
+          console.log("mounted");
+        },
+        watch: {
+          message: {
+            handler() {
+              console.log("watch");
+            },
+            immediate: true,
+          },
+        },
+        methods: {
+          changeMessage() {
+            const messageEl = document.querySelector(".message");
+            this.message = "hello world";
+            console.log("normal", messageEl.textContent);
+            new Promise((resolve) => {
+              resolve();
+            }).then(() => {
+              console.log("promise", messageEl.textContent);
+            });
+            // debugger;
+            this.$nextTick(() => {
+              console.log("promise", messageEl.textContent);
+            });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
