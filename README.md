@@ -1,7 +1,7 @@
 ## 调试流程
 
 ### 前置条件
-vscode安装`Live Server`插件, 高效调试html页面
+vscode安装`Live Server`插件, 高效调试html页面  
 vscode安装`Better Comments`插件, 以便于高亮显示注释
 
 ### 调试准备
