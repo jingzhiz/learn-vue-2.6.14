@@ -60,7 +60,6 @@ Dep.target = null;
 const targetStack = [];
 
 export function pushTarget(target: ?Watcher) {
-  console.log(target);
   targetStack.push(target);
   Dep.target = target;
 }
